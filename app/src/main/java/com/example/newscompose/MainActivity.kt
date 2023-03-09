@@ -15,6 +15,7 @@ import com.example.newscompose.ui.theme.NewsComposeTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        appComponent.inject(this)
         setContent {
             NewsComposeTheme {
                 // A surface container using the 'background' color from the theme
