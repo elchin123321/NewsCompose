@@ -6,6 +6,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.newscompose.ui.screens.HomeScreen
 import com.example.newscompose.ui.screens.StoriesViewModel
 
 @Composable
@@ -16,5 +17,9 @@ fun NewsApp(modifier: Modifier = Modifier) {
         color = MaterialTheme.colors.background
     ) {
         val storiesViewModel:StoriesViewModel = viewModel()
+        HomeScreen(
+            storiesUiState = storiesViewModel.storiesUiState,
+            onArticleClick = {}//TODO
+            )
     }
 }

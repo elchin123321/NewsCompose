@@ -7,4 +7,6 @@ data class Multimedia(
     val url:String,
     @SerializedName("format")
     val format:String,
+    @SerializedName("caption")
+    val caption:String,
 )

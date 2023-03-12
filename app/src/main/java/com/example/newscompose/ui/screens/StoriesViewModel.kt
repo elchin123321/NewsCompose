@@ -16,15 +16,17 @@ import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
-class StoriesViewModel @Inject constructor(private val repository: StoriesRepository) : ViewModel() {
+class StoriesViewModel @Inject constructor(private val repository: StoriesRepository) :
+    ViewModel() {
 
     var storiesUiState: StoriesUiState by mutableStateOf(StoriesUiState.Loading)
         private set
+
     init {
         fetchStories()
     }
 
-    fun fetchStories(section:String = "home"){
+    fun fetchStories(section: String = "home") {
         viewModelScope.launch {
             storiesUiState = StoriesUiState.Loading
             withContext(Dispatchers.IO) {
@@ -40,6 +42,5 @@ class StoriesViewModel @Inject constructor(private val repository: StoriesReposi
             }
         }
     }
-
 
 }
