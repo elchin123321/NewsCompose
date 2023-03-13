@@ -1,4 +1,4 @@
-package com.example.newscompose.ui.screens
+package com.example.newscompose.ui.screens.home
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween

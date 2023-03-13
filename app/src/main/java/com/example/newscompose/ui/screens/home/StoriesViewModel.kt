@@ -1,4 +1,4 @@
-package com.example.newscompose.ui.screens
+package com.example.newscompose.ui.screens.home
 
 import android.util.Log
 import androidx.compose.runtime.getValue
