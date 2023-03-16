@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">NewsCompose</string>
+
+    <string-array name="sections">
+        <item>arts</item>
+        <item>automobiles</item>
+        <item>books</item>
+        <item>business</item>
+        <item>fashion</item>
+        <item>food</item>
+        <item>health</item>
+        <item>insider</item>
+        <item>magazine</item>
+        <item>movies</item>
+        <item>obituaries</item>
+        <item>opinion</item>
+        <item>politics</item>
+        <item>science</item>
+        <item>sports</item>
+        <item>technology</item>
+        <item>theater</item>
+        <item>travel</item>
+        <item>upshot</item>
+        <item>us</item>
+        <item>world</item>
+    </string-array>
+
 </resources>

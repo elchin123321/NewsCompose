@@ -18,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.newscompose.R
 import com.example.newscompose.ui.screens.home.HomeScreen
 import com.example.newscompose.ui.screens.home.StoriesViewModel
+import com.example.newscompose.ui.screens.sections.SectionsScreen
 
 
 enum class Screens(
@@ -77,7 +78,10 @@ fun NewsApp(modifier: Modifier = Modifier) {
                     )
                 }
                 composable("sections") {
-
+                    SectionsScreen(
+                        onBackPressed = { /*TODO*/ },
+                        onSectionClick = { /*TODO*/ },
+                    )
                 }
                 composable("webview") {
                     //TODO
