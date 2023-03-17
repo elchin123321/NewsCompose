@@ -25,7 +25,7 @@ import com.example.newscompose.data.network.models.Article
 @Composable
 fun HomeScreen(
     storiesUiState: StoriesUiState,
-    onArticleClick:()->Unit,
+    onArticleClick:(url:String)->Unit,
     modifier: Modifier = Modifier
 ) {
     Crossfade(
@@ -55,14 +55,14 @@ fun LoadingHomeScreen(
 @Composable
 fun ArticleCard(
     article: Article,
-    onArticleClick:()->Unit,
+    onArticleClick:(url:String)->Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable { onArticleClick() },
+            .clickable { onArticleClick(article.url) },
     ) {
         Text(
             modifier = Modifier.padding(4.dp),
@@ -93,7 +93,7 @@ fun ArticleCard(
 @Composable
 fun ArticlesListScreen(
     articles: List<Article>,
-    onArticleClick:()->Unit,
+    onArticleClick:(url:String)->Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(

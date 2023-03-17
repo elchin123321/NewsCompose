@@ -15,7 +15,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.newscompose.R
+import com.example.newscompose.ui.screens.WebViewScreen
 import com.example.newscompose.ui.screens.home.HomeScreen
 import com.example.newscompose.ui.screens.home.StoriesViewModel
 import com.example.newscompose.ui.screens.sections.SectionsScreen
@@ -72,8 +74,8 @@ fun NewsApp(modifier: Modifier = Modifier) {
                     HomeScreen(
                         modifier = Modifier.padding(4.dp),
                         storiesUiState = storiesViewModel.storiesUiState,
-                        onArticleClick = {
-                            navController.navigate("webview")
+                        onArticleClick = { url ->
+                            navController.navigate("webview?url=$url")
                         }
                     )
                 }
@@ -83,13 +85,21 @@ fun NewsApp(modifier: Modifier = Modifier) {
                         onSectionClick = { /*TODO*/ },
                     )
                 }
-                composable("webview") {
-                    //TODO
+                composable(
+                    "webview?url={url}",
+                    arguments = listOf(navArgument("url") { defaultValue = "suck" })
+                ) {navBackStackEntry->
+                    navBackStackEntry.arguments?.getString("url")?.let {
+                        WebViewScreen(url = it)
+                    }
+                    
                 }
             }
-
-
         }
+
     }
 }
+
+
+
 

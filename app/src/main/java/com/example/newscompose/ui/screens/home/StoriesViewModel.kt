@@ -26,7 +26,7 @@ class StoriesViewModel @Inject constructor(private val repository: StoriesReposi
         fetchStories()
     }
 
-    fun fetchStories(section: String = "home") {
+    fun fetchStories(section: String = "arts") {
         viewModelScope.launch {
             storiesUiState = StoriesUiState.Loading
             withContext(Dispatchers.IO) {
