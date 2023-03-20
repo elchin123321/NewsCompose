@@ -25,7 +25,7 @@ import com.example.newscompose.data.network.models.Article
 @Composable
 fun HomeScreen(
     storiesUiState: StoriesUiState,
-    onArticleClick:(url:String)->Unit,
+    onArticleClick: (url: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Crossfade(
@@ -34,7 +34,10 @@ fun HomeScreen(
     ) { state ->
         when (state) {
             is StoriesUiState.Loading -> LoadingHomeScreen()
-            is StoriesUiState.Success -> ArticlesListScreen(articles = state.stories, onArticleClick = onArticleClick)
+            is StoriesUiState.Success -> ArticlesListScreen(
+                articles = state.stories,
+                onArticleClick = onArticleClick
+            )
             is StoriesUiState.Error -> LoadingHomeScreen() //TODO
 
         }
@@ -48,14 +51,17 @@ fun LoadingHomeScreen(
     Box(
         modifier = modifier.fillMaxSize()
     ) {
-        CircularProgressIndicator(Modifier.align(Alignment.Center))
+        CircularProgressIndicator(
+            Modifier.align(Alignment.Center),
+            color = Color.Black
+        )
     }
 }
 
 @Composable
 fun ArticleCard(
     article: Article,
-    onArticleClick:(url:String)->Unit,
+    onArticleClick: (url: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -93,7 +99,7 @@ fun ArticleCard(
 @Composable
 fun ArticlesListScreen(
     articles: List<Article>,
-    onArticleClick:(url:String)->Unit,
+    onArticleClick: (url: String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
