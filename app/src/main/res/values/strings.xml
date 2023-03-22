@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">NewsCompose</string>
+    <string name="devise_is_offline">Your device is offline, please check connection and retry</string>
+    <string name="retry">Retry</string>
 
     <string-array name="sections">
         <item>arts</item>

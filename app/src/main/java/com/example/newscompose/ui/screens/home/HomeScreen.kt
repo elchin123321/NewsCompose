@@ -6,19 +6,19 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.example.newscompose.R
 import com.example.newscompose.data.network.models.Article
 
 
@@ -26,6 +26,7 @@ import com.example.newscompose.data.network.models.Article
 fun HomeScreen(
     storiesUiState: StoriesUiState,
     onArticleClick: (url: String) -> Unit,
+    retryClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Crossfade(
@@ -38,8 +39,7 @@ fun HomeScreen(
                 articles = state.stories,
                 onArticleClick = onArticleClick
             )
-            is StoriesUiState.Error -> LoadingHomeScreen() //TODO
-
+            is StoriesUiState.Error -> ErrorScreen(retryClick = retryClick)
         }
     }
 }
@@ -116,4 +116,27 @@ fun ArticlesListScreen(
         }
     }
 
+}
+
+@Composable
+fun ErrorScreen(
+    modifier: Modifier = Modifier,
+    retryClick: () -> Unit = {},
+) {
+    Column(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = stringResource(id = R.string.devise_is_offline),
+            style = MaterialTheme.typography.h3,
+            textAlign = TextAlign.Center
+        )
+        Button(
+            onClick = retryClick
+        ) {
+            Text(text = stringResource(id = R.string.retry))
+        }
+    }
 }

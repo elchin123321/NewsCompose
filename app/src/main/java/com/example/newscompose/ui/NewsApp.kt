@@ -76,7 +76,8 @@ fun NewsApp(modifier: Modifier = Modifier) {
                         storiesUiState = storiesViewModel.storiesUiState,
                         onArticleClick = { url ->
                             navController.navigate("webview?url=$url")
-                        }
+                        },
+                        retryClick = {storiesViewModel.fetchStories()}
                     )
                 }
                 composable("sections") {
